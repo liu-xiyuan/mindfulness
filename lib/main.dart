@@ -1,3 +1,4 @@
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
 import 'package:mindfulness/router/app_router.dart';
@@ -8,8 +9,14 @@ import 'pages/home_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // 初始化插件
 
-  await Get.putAsync(() => XboxInputService().init());
-
+  // await Get.putAsync(() => XboxInputService().init());
+  doWhenWindowReady(() {
+    const initialSize = Size(1280, 800);
+    // appWindow.minSize = initialSize;
+    appWindow.size = initialSize;
+    appWindow.alignment = Alignment.center;
+    // appWindow.show();
+  });
   runApp(const MyApp());
 }
 
