@@ -1,6 +1,7 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
+import 'package:mindfulness/controller/petal_animation_controller.dart';
 import 'package:mindfulness/router/app_router.dart';
 import 'package:mindfulness/services/xbox_input_service.dart';
 import 'package:mindfulness/styles/app_theme.dart';
@@ -17,6 +18,7 @@ void main() async {
     appWindow.alignment = Alignment.center;
     // appWindow.show();
   });
+  Get.put(PetalAnimationController());
   runApp(const MyApp());
 }
 

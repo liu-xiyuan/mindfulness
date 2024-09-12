@@ -1,38 +1,25 @@
+import 'dart:developer';
 import 'dart:math' hide log;
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:mindfulness/controller/petal_animation_controller.dart';
 
 /// 花瓣呼吸动画
-class PetalAnimation extends StatefulWidget {
+class PetalAnimation extends GetView<PetalAnimationController> {
   const PetalAnimation({super.key});
 
   @override
-  State<PetalAnimation> createState() => _PetalAnimationState();
-}
-
-class _PetalAnimationState extends State<PetalAnimation>
-    with SingleTickerProviderStateMixin {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    var c = Get.put(PetalAnimationController());
-
     return AnimatedBuilder(
-      animation: c.animation,
+      animation: controller.animation,
       builder: (context, _) {
         return SizedBox(
           width: 400,
           height: 400,
           child: ScaleTransition(
-            scale: c.scaleTween,
+            scale: controller.scaleTween,
             child: CustomPaint(
-              painter: PetalPainter(progress: c.animation.value),
+              painter: PetalPainter(progress: controller.animation.value),
             ),
           ),
         );
